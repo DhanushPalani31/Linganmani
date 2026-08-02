@@ -1,43 +1,14 @@
-import { CalendarDays } from "lucide-react";
-import { motion } from "framer-motion";
-import { events } from "../data/content";
-import Reveal from "../components/Reveal";
+import ComingSoon from "../components/ComingSoon";
 
+// Full News & Events page (event cards, tags, dates) is built and working —
+// temporarily replaced with a placeholder while real event content and
+// photos are being finalised with the school. See git history for the
+// previous version, or just ask to have it restored.
 export default function Events() {
   return (
-    <div>
-      <section className="bg-brand-50 py-16">
-        <div className="mx-auto max-w-5xl px-5 lg:px-8 text-center">
-          <span className="text-xs font-semibold tracking-widest uppercase text-brand-700">News &amp; Events</span>
-          <h1 className="mt-3 font-display font-extrabold text-3xl lg:text-4xl text-ink-900">
-            Straight off the school notice board.
-          </h1>
-          <p className="mt-4 text-ink-700 max-w-2xl mx-auto">
-            Sports days, annual day, national celebrations, and admissions notices — all in one
-            easy-to-browse feed instead of a separate static page per post.
-          </p>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-5 lg:px-8 py-16">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {events.map((e, i) => (
-            <Reveal key={e.title} delay={i * 0.06}>
-              <motion.div whileHover={{ y: -6 }} className="bg-white rounded-2xl border border-slate-200 overflow-hidden h-full">
-                <div className="h-32 bg-gradient-to-br from-brand-600 to-brand-900 flex items-center justify-center text-white text-xs font-semibold tracking-wide uppercase">
-                  {e.tag}
-                </div>
-                <div className="p-5">
-                  <p className="flex items-center gap-1.5 text-xs text-ink-500 font-medium">
-                    <CalendarDays size={13} /> {e.date}
-                  </p>
-                  <h3 className="font-display font-semibold text-ink-900 mt-2">{e.title}</h3>
-                </div>
-              </motion.div>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-    </div>
+    <ComingSoon
+      title="News & Events"
+      description="We're finishing up this section with real, up-to-date event photos and dates from the school. Check back soon."
+    />
   );
 }
