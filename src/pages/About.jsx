@@ -12,7 +12,7 @@ export default function About() {
             From a rented hall to a campus with a garden and playground.
           </h1>
           <ImageWithFallback
-            src="/images/about-campus.jpg"
+            src="/images/about-campus.png"
             alt="Lingannamani Matriculation School campus building"
             className="w-full max-w-2xl mx-auto mt-8 rounded-2xl object-cover aspect-video shadow-lg"
           />

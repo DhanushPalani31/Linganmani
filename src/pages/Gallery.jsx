@@ -33,7 +33,7 @@ export default function Gallery() {
           {albums.map((a) => (
             <div key={a.title} className={`relative aspect-square rounded-2xl overflow-hidden bg-gradient-to-br ${a.tone}`}>
               <ImageWithFallback
-                src={`/images/gallery/${a.file}.jpg`}
+                src={`/images/gallery/${a.file}.png`}
                 alt={a.title}
                 className="absolute inset-0 w-full h-full object-cover"
                 fallbackClassName="absolute inset-0 !bg-transparent"

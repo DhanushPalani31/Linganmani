@@ -54,7 +54,7 @@ export default function Contact() {
             </div>
           </div>
           <ImageWithFallback
-            src="/images/contact-office.jpg"
+            src="/images/contact-office.png"
             alt="Lingannamani Matriculation School front office"
             className="w-full max-w-sm mx-auto mt-10 rounded-2xl object-cover aspect-square shadow-lg"
           />

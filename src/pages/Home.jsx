@@ -42,7 +42,7 @@ export default function Home() {
           </div>
 
           <ImageWithFallback
-            src="/images/hero-campus.jpg"
+            src="/images/hero-campus.png"
             alt="Lingannamani Matriculation School campus and students"
             className="w-full max-w-lg mx-auto rounded-3xl object-cover aspect-[4/3] shadow-xl"
           />
