@@ -74,9 +74,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-white/10 mt-10 pt-6 flex flex-col sm:flex-row justify-between gap-2 text-xs text-slate-500">
+        <div className="border-t border-white/10 mt-10 pt-6 text-xs text-slate-500">
           <span>© {new Date().getFullYear()} {school.name}. All rights reserved.</span>
-          <span>Built with React &amp; Tailwind CSS.</span>
         </div>
       </div>
     </footer>
