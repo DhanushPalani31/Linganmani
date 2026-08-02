@@ -1,6 +1,8 @@
 export const school = {
-  name: "Lingannamani Matriculation School",
+  name: "Lingannamani Matriculation & Higher Secondary School",
   shortName: "Lingannamani",
+  tagline: "Matriculation & Higher Secondary School",
+  navTag: "Matric. & Hr. Sec. School", // compact variant for tight nav/footer space
   founded: 1997,
   students: "900+",
   address: "Thayappa Nagar, Near Adhiparasakthi Temple, Tirupattur - 635601, Tamil Nadu",
@@ -27,8 +29,8 @@ export const stats = [
 
 export const programs = [
   {
-    title: "Matriculation Curriculum",
-    desc: "A structured, syllabus-first academic track from primary through matriculation level.",
+    title: "Matriculation & Higher Secondary",
+    desc: "A structured, syllabus-first academic track from primary through Std XII, with Science, Commerce, and Arts streams at Higher Secondary level.",
     icon: "BookOpen",
   },
   {
@@ -46,6 +48,17 @@ export const programs = [
     desc: "Financial support for deserving students, so fees are never a barrier to learning.",
     icon: "Award",
   },
+];
+
+// SAMPLE DATA — replace with the school's real board results before launch.
+// Keeping this in one place means the "Academic Track Record" chart on the
+// Academics page updates the moment these numbers are corrected.
+export const academicResults = [
+  { year: "2021", passPercent: 92, distinctions: 34 },
+  { year: "2022", passPercent: 94, distinctions: 41 },
+  { year: "2023", passPercent: 95, distinctions: 47 },
+  { year: "2024", passPercent: 96, distinctions: 52 },
+  { year: "2025", passPercent: 97, distinctions: 58 },
 ];
 
 export const facilities = [

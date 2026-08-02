@@ -16,7 +16,7 @@ export default function About() {
           </h1>
           <ImageWithFallback
             src="/images/about-campus.png"
-            alt="Lingannamani Matriculation School campus building"
+            alt="Lingannamani Matriculation & Higher Secondary School campus building"
             className="w-full max-w-2xl mx-auto mt-8 rounded-2xl object-cover aspect-video shadow-lg"
           />
         </div>
@@ -30,9 +30,9 @@ export default function About() {
           expanded it again the following year to keep pace with demand.
         </p>
         <p className="mt-5 text-ink-700 leading-relaxed">
-          Nearly three decades on, the school teaches over {school.students} students on the Matriculation
-          syllabus, with particular pride in how it supports students who find schoolwork difficult — through
-          dedicated coaching sessions rather than letting anyone fall behind.
+          Nearly three decades on, the school teaches over {school.students} students across Matriculation
+          and Higher Secondary levels, with particular pride in how it supports students who find schoolwork
+          difficult — through dedicated coaching sessions rather than letting anyone fall behind.
         </p>
 
         <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-6">

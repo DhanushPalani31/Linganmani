@@ -40,7 +40,7 @@ export default function Navbar() {
                 {school.shortName}
               </span>
               <span className="hidden sm:block text-[10.5px] tracking-wide uppercase text-ink-500">
-                Matriculation School
+                {school.navTag}
               </span>
             </span>
           </Link>

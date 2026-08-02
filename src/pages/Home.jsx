@@ -30,7 +30,7 @@ export default function Home() {
               Building strong foundations for {school.students} students in Tirupattur.
             </h1>
             <p className="mt-5 text-lg text-ink-700 max-w-xl">
-              {school.name} has provided disciplined, caring matriculation education since {school.founded} —
+              {school.name} has provided disciplined, caring education since {school.founded} —
               known for supporting every learner, including those who need extra coaching to succeed.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
@@ -64,7 +64,7 @@ export default function Home() {
           >
             <ImageWithFallback
               src="/images/hero-campus.png"
-              alt="Lingannamani Matriculation School campus and students"
+              alt="Lingannamani Matriculation & Higher Secondary School campus and students"
               className="w-full max-w-lg mx-auto rounded-3xl object-cover aspect-[4/3] shadow-xl"
             />
           </motion.div>

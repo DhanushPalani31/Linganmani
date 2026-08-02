@@ -1,4 +1,4 @@
-# Lingannamani Matriculation School — Website (React Rebuild)
+# Lingannamani Matriculation & Higher Secondary School — Website (React Rebuild)
 
 A modern rebuild of https://www.lingannamanischool.com using React, React
 Router, and Tailwind CSS. Built to replace the previous static HTML site
