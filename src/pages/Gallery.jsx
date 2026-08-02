@@ -1,4 +1,6 @@
+import { motion } from "framer-motion";
 import ImageWithFallback from "../components/ImageWithFallback";
+import Reveal from "../components/Reveal";
 
 const albums = [
   { title: "Annual Day", file: "annual-day", tone: "from-brand-600 to-brand-900" },
@@ -30,18 +32,24 @@ export default function Gallery() {
 
       <section className="mx-auto max-w-6xl px-5 lg:px-8 py-16">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {albums.map((a) => (
-            <div key={a.title} className={`relative aspect-square rounded-2xl overflow-hidden bg-gradient-to-br ${a.tone}`}>
-              <ImageWithFallback
-                src={`/images/gallery/${a.file}.png`}
-                alt={a.title}
-                className="absolute inset-0 w-full h-full object-cover"
-                fallbackClassName="absolute inset-0 !bg-transparent"
-              />
-              <span className="absolute bottom-0 left-0 right-0 bg-black/40 text-white text-sm font-semibold px-3 py-2">
-                {a.title}
-              </span>
-            </div>
+          {albums.map((a, i) => (
+            <Reveal key={a.title} delay={i * 0.05}>
+              <motion.div
+                whileHover={{ scale: 1.03 }}
+                transition={{ duration: 0.2 }}
+                className={`relative aspect-square rounded-2xl overflow-hidden bg-gradient-to-br ${a.tone}`}
+              >
+                <ImageWithFallback
+                  src={`/images/gallery/${a.file}.png`}
+                  alt={a.title}
+                  className="absolute inset-0 w-full h-full object-cover"
+                  fallbackClassName="absolute inset-0 !bg-transparent"
+                />
+                <span className="absolute bottom-0 left-0 right-0 bg-black/40 text-white text-sm font-semibold px-3 py-2">
+                  {a.title}
+                </span>
+              </motion.div>
+            </Reveal>
           ))}
         </div>
       </section>

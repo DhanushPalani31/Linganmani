@@ -1,5 +1,7 @@
 import { CalendarDays } from "lucide-react";
+import { motion } from "framer-motion";
 import { events } from "../data/content";
+import Reveal from "../components/Reveal";
 
 export default function Events() {
   return (
@@ -19,18 +21,20 @@ export default function Events() {
 
       <section className="mx-auto max-w-6xl px-5 lg:px-8 py-16">
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {events.map((e) => (
-            <div key={e.title} className="bg-white rounded-2xl border border-slate-200 overflow-hidden">
-              <div className="h-32 bg-gradient-to-br from-brand-600 to-brand-900 flex items-center justify-center text-white text-xs font-semibold tracking-wide uppercase">
-                {e.tag}
-              </div>
-              <div className="p-5">
-                <p className="flex items-center gap-1.5 text-xs text-ink-500 font-medium">
-                  <CalendarDays size={13} /> {e.date}
-                </p>
-                <h3 className="font-display font-semibold text-ink-900 mt-2">{e.title}</h3>
-              </div>
-            </div>
+          {events.map((e, i) => (
+            <Reveal key={e.title} delay={i * 0.06}>
+              <motion.div whileHover={{ y: -6 }} className="bg-white rounded-2xl border border-slate-200 overflow-hidden h-full">
+                <div className="h-32 bg-gradient-to-br from-brand-600 to-brand-900 flex items-center justify-center text-white text-xs font-semibold tracking-wide uppercase">
+                  {e.tag}
+                </div>
+                <div className="p-5">
+                  <p className="flex items-center gap-1.5 text-xs text-ink-500 font-medium">
+                    <CalendarDays size={13} /> {e.date}
+                  </p>
+                  <h3 className="font-display font-semibold text-ink-900 mt-2">{e.title}</h3>
+                </div>
+              </motion.div>
+            </Reveal>
           ))}
         </div>
       </section>

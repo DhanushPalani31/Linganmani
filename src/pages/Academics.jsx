@@ -1,5 +1,7 @@
 import { BookOpen, GraduationCap, MonitorPlay, Award, CheckCircle2 } from "lucide-react";
+import { motion } from "framer-motion";
 import { programs } from "../data/content";
+import Reveal from "../components/Reveal";
 
 const ICONS = { BookOpen, GraduationCap, MonitorPlay, Award };
 
@@ -27,16 +29,18 @@ export default function Academics() {
 
       <section className="mx-auto max-w-7xl px-5 lg:px-8 py-16">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {programs.map((p) => {
+          {programs.map((p, i) => {
             const Icon = ICONS[p.icon];
             return (
-              <div key={p.title} className="rounded-2xl border border-slate-200 p-6">
-                <div className="w-12 h-12 rounded-xl bg-brand-50 grid place-items-center text-brand-700 mb-4">
-                  <Icon size={22} />
-                </div>
-                <h3 className="font-display font-semibold text-lg text-ink-900">{p.title}</h3>
-                <p className="mt-2 text-sm text-ink-500">{p.desc}</p>
-              </div>
+              <Reveal key={p.title} delay={i * 0.08}>
+                <motion.div whileHover={{ y: -6 }} className="h-full rounded-2xl border border-slate-200 p-6 hover:shadow-lg hover:border-brand-200 transition-shadow">
+                  <div className="w-12 h-12 rounded-xl bg-brand-50 grid place-items-center text-brand-700 mb-4">
+                    <Icon size={22} />
+                  </div>
+                  <h3 className="font-display font-semibold text-lg text-ink-900">{p.title}</h3>
+                  <p className="mt-2 text-sm text-ink-500">{p.desc}</p>
+                </motion.div>
+              </Reveal>
             );
           })}
         </div>
@@ -47,15 +51,17 @@ export default function Academics() {
           <h2 className="font-display font-bold text-2xl text-ink-900 mb-8 text-center">Academic Structure</h2>
           <div className="space-y-4">
             {structure.map((s, i) => (
-              <div key={s.level} className="bg-white rounded-2xl border border-slate-200 p-6 flex gap-5 items-start">
-                <span className="w-10 h-10 rounded-full bg-brand-700 text-white grid place-items-center font-display font-bold text-sm shrink-0">
-                  {i + 1}
-                </span>
-                <div>
-                  <h3 className="font-semibold text-ink-900">{s.level}</h3>
-                  <p className="mt-1 text-sm text-ink-500">{s.desc}</p>
+              <Reveal key={s.level} delay={i * 0.1}>
+                <div className="bg-white rounded-2xl border border-slate-200 p-6 flex gap-5 items-start">
+                  <span className="w-10 h-10 rounded-full bg-brand-700 text-white grid place-items-center font-display font-bold text-sm shrink-0">
+                    {i + 1}
+                  </span>
+                  <div>
+                    <h3 className="font-semibold text-ink-900">{s.level}</h3>
+                    <p className="mt-1 text-sm text-ink-500">{s.desc}</p>
+                  </div>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>

@@ -1,6 +1,9 @@
 import { Target, Compass, Sparkles } from "lucide-react";
+import { motion } from "framer-motion";
 import { school, trustees, stats } from "../data/content";
 import ImageWithFallback from "../components/ImageWithFallback";
+import Reveal from "../components/Reveal";
+import CountUpStat from "../components/CountUpStat";
 
 export default function About() {
   return (
@@ -33,11 +36,13 @@ export default function About() {
         </p>
 
         <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-6">
-          {stats.map((s) => (
-            <div key={s.label} className="rounded-2xl border border-slate-200 p-5 text-center">
-              <p className="font-display font-bold text-2xl text-brand-700">{s.value}</p>
-              <p className="text-xs text-ink-500 mt-1">{s.label}</p>
-            </div>
+          {stats.map((s, i) => (
+            <Reveal key={s.label} delay={i * 0.06}>
+              <div className="rounded-2xl border border-slate-200 p-5 text-center">
+                <CountUpStat value={s.value} className="font-display font-bold text-2xl text-brand-700" />
+                <p className="text-xs text-ink-500 mt-1">{s.label}</p>
+              </div>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -45,7 +50,7 @@ export default function About() {
       {/* Vision & Mission */}
       <section id="vm" className="bg-slate-50 py-16 scroll-mt-24">
         <div className="mx-auto max-w-5xl px-5 lg:px-8 grid sm:grid-cols-2 gap-6">
-          <div className="bg-white rounded-2xl p-8 border border-slate-200">
+          <Reveal className="bg-white rounded-2xl p-8 border border-slate-200">
             <div className="w-12 h-12 rounded-xl bg-brand-50 grid place-items-center text-brand-700 mb-4">
               <Compass size={22} />
             </div>
@@ -54,8 +59,8 @@ export default function About() {
               A community where every child feels loved, respected, and encouraged to grow into their
               fullest potential.
             </p>
-          </div>
-          <div className="bg-white rounded-2xl p-8 border border-slate-200">
+          </Reveal>
+          <Reveal delay={0.1} className="bg-white rounded-2xl p-8 border border-slate-200">
             <div className="w-12 h-12 rounded-xl bg-brand-50 grid place-items-center text-brand-700 mb-4">
               <Target size={22} />
             </div>
@@ -64,7 +69,7 @@ export default function About() {
               To provide high-quality education and childcare in a safe, respectful, inclusive environment
               that builds a foundation for lifelong learning.
             </p>
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -93,14 +98,19 @@ export default function About() {
             <h2 className="mt-3 font-display font-bold text-2xl text-ink-900">The people the school answers to</h2>
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-            {trustees.map((t) => (
-              <div key={t.name} className="bg-white rounded-2xl border border-slate-200 p-6 text-center">
-                <div className="w-16 h-16 rounded-full mx-auto mb-4 grid place-items-center font-display font-bold text-white text-lg bg-gradient-to-br from-brand-500 to-brand-800">
-                  {t.name.split(" ").filter(Boolean).slice(-2).map((n) => n[0]).join("")}
-                </div>
-                <h3 className="font-semibold text-ink-900 text-sm">{t.name}</h3>
-                <p className="text-xs text-ink-500 mt-1 uppercase tracking-wide">{t.role}</p>
-              </div>
+            {trustees.map((t, i) => (
+              <Reveal key={t.name} delay={i * 0.08}>
+                <motion.div
+                  whileHover={{ y: -4 }}
+                  className="bg-white rounded-2xl border border-slate-200 p-6 text-center"
+                >
+                  <div className="w-16 h-16 rounded-full mx-auto mb-4 grid place-items-center font-display font-bold text-white text-lg bg-gradient-to-br from-brand-500 to-brand-800">
+                    {t.name.split(" ").filter(Boolean).slice(-2).map((n) => n[0]).join("")}
+                  </div>
+                  <h3 className="font-semibold text-ink-900 text-sm">{t.name}</h3>
+                  <p className="text-xs text-ink-500 mt-1 uppercase tracking-wide">{t.role}</p>
+                </motion.div>
+              </Reveal>
             ))}
           </div>
         </div>
