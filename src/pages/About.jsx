@@ -1,5 +1,6 @@
 import { Target, Compass, Sparkles } from "lucide-react";
 import { school, trustees, stats } from "../data/content";
+import ImageWithFallback from "../components/ImageWithFallback";
 
 export default function About() {
   return (
@@ -10,6 +11,11 @@ export default function About() {
           <h1 className="mt-3 font-display font-extrabold text-3xl lg:text-4xl text-ink-900">
             From a rented hall to a campus with a garden and playground.
           </h1>
+          <ImageWithFallback
+            src="/images/about-campus.jpg"
+            alt="Lingannamani Matriculation School campus building"
+            className="w-full max-w-2xl mx-auto mt-8 rounded-2xl object-cover aspect-video shadow-lg"
+          />
         </div>
       </section>
 

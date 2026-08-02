@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { BookOpen, GraduationCap, MonitorPlay, Award, ArrowRight, Quote } from "lucide-react";
 import { school, stats, programs, testimonials, events } from "../data/content";
-import { HeroIllustration } from "../components/Illustrations";
+import ImageWithFallback from "../components/ImageWithFallback";
 
 const ICONS = { BookOpen, GraduationCap, MonitorPlay, Award };
 
@@ -41,7 +41,11 @@ export default function Home() {
             </div>
           </div>
 
-          <HeroIllustration className="w-full max-w-lg mx-auto" />
+          <ImageWithFallback
+            src="/images/hero-campus.jpg"
+            alt="Lingannamani Matriculation School campus and students"
+            className="w-full max-w-lg mx-auto rounded-3xl object-cover aspect-[4/3] shadow-xl"
+          />
         </div>
       </section>
 

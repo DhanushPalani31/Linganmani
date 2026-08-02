@@ -42,29 +42,53 @@ git push -u origin main
   neutrals. Defined as CSS variables in `src/index.css` (`@theme` block,
   Tailwind v4 syntax) — change values there to re-theme the whole site.
 - **Type**: Sora (display/headings) + Inter (body), loaded from Google Fonts.
-- **Illustrations**: `src/components/Illustrations.jsx` contains original
-  flat-style SVG graphics used in place of photography. This build
-  environment has no AI image-generation tool, so these are hand-built
-  vector placeholders, not photos and not AI-generated images. Before
-  launch, replace them with:
-  - real campus photography, or
-  - images generated with an image-gen tool of your choice (Midjourney,
-    DALL·E, Claude's image tools, etc.), dropped into `src/assets/`.
-  The Gallery page (`src/pages/Gallery.jsx`) also uses colored tiles as
-  placeholders for the same reason — same fix applies.
+- **Images**: every photo slot (`ImageWithFallback.jsx`) points at a real
+  file path under `public/images/...` and shows a soft placeholder until
+  that file exists. See `IMAGE_PROMPTS.md` for the exact filenames and a
+  ready-to-use prompt for each one.
 
-## Chatbot widget
+## Chatbot widget (real Gemini integration)
 
-`src/components/Chatbot.jsx` is a floating assistant that answers common
-questions (admissions, fees, contact, coaching, trustees) using a simple
-keyword matcher in `src/data/content.js` (`chatbotFaqs`) — no backend
-required, works immediately.
+`src/components/Chatbot.jsx` is a floating assistant backed by Google's
+Gemini API. It calls `/api/chat` (`api/chat.js`), a serverless function that
+keeps your `GEMINI_API_KEY` on the server — the browser never sees it.
 
-To upgrade it to a real AI assistant:
-1. Add a small server route (e.g. `/api/chat`) that calls the Anthropic or
-   OpenAI API, with your API key kept server-side (never in the browser).
-2. Replace the body of `getAnswer()` in `Chatbot.jsx` with a `fetch()` call
-   to that route, passing the message history and rendering the reply.
+**Setup:**
+1. Get a free key at https://aistudio.google.com/apikey
+2. Copy `.env.example` to `.env` and paste your key in as `GEMINI_API_KEY`
+3. Run locally with `vercel dev` (not `npm run dev`) so the `/api/chat`
+   function is actually served — see "Deploying" below
+4. In production (Vercel/Netlify), set `GEMINI_API_KEY` as an environment
+   variable in the project settings — never commit it
+
+The function in `api/chat.js` uses `gemini-3.5-flash-lite` by default — a
+fast, low-cost, generally-available Gemini model well suited to short FAQ
+answers. Google renames/retires models periodically (`gemini-2.5-flash` and
+`gemini-2.5-pro` are both scheduled to retire in October 2026), so check
+https://ai.google.dev/gemini-api/docs/models before deploying and update the
+`MODEL` constant if needed.
+
+If the API call fails for any reason (no key configured, network issue, rate
+limit), the widget falls back to the original keyword-matched FAQ answers in
+`src/data/content.js` rather than going silent.
+
+## Deploying (so `/api/chat` actually works)
+
+This project needs a host that runs serverless functions, not a purely
+static host:
+- **Vercel** (recommended, zero config): `npm i -g vercel`, then `vercel` in
+  the project root. It auto-detects the Vite frontend and the `api/`
+  functions.
+- **Netlify**: works too, but `api/chat.js` needs to move to
+  `netlify/functions/chat.js` and use Netlify's handler signature instead of
+  Vercel's — ask me if you want that version.
+
+## Images
+
+See **`IMAGE_PROMPTS.md`** for the full list of image files the site
+expects, the exact path each one goes in, and a ready-to-use Gemini
+(Nano Banana) prompt for generating each one. Until those files exist, every
+image slot shows a soft placeholder instead of a broken-image icon.
 
 ## Content
 

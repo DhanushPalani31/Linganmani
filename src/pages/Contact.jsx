@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Phone, Mail, MapPin, Send, CheckCircle2 } from "lucide-react";
 import { school } from "../data/content";
-import { ContactIllustration } from "../components/Illustrations";
+import ImageWithFallback from "../components/ImageWithFallback";
 
 export default function Contact() {
   const [sent, setSent] = useState(false);
@@ -53,7 +53,11 @@ export default function Contact() {
               </div>
             </div>
           </div>
-          <ContactIllustration className="w-full max-w-sm mx-auto mt-10" />
+          <ImageWithFallback
+            src="/images/contact-office.jpg"
+            alt="Lingannamani Matriculation School front office"
+            className="w-full max-w-sm mx-auto mt-10 rounded-2xl object-cover aspect-square shadow-lg"
+          />
         </div>
 
         <div className="bg-white rounded-3xl border border-slate-200 p-8">
